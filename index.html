@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credential Strength Benchmark</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Credential Strength</h1>
+        <p class="subtitle">Test how strong your password is in real-time.</p>
+
+        <div class="input-group">
+            <input type="password" id="password-input" placeholder="Type your password..." autocomplete="off">
+            <button id="toggle-visibility" type="button" aria-label="Toggle password visibility">
+                <svg id="icon-eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-eye">
+                    <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg id="icon-eye-off" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-eye-off">
+                    <path
+                        d="M10.733 5.076a10.814 10.814 0 0 1 11.205 6.579 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-1.444 2.49" />
+                    <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+                    <path
+                        d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+                    <path d="m2 2 20 20" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="strength-meter-container">
+            <div class="strength-labels">
+                <span id="strength-text">Empty</span>
+                <span id="strength-score">0 / 4</span>
+            </div>
+            <div class="strength-bars">
+                <div class="bar" id="bar-1"></div>
+                <div class="bar" id="bar-2"></div>
+                <div class="bar" id="bar-3"></div>
+                <div class="bar" id="bar-4"></div>
+            </div>
+        </div>
+
+        <div class="requirements">
+            <p class="req-title">Password must contain:</p>
+            <ul id="requirement-list">
+                <li id="req-length" class="invalid">At least 8 characters</li>
+                <li id="req-lower" class="invalid">Lowercase letter (a-z)</li>
+                <li id="req-upper" class="invalid">Uppercase letter (A-Z)</li>
+                <li id="req-number" class="invalid">Number (0-9)</li>
+                <li id="req-special" class="invalid">Special character (!@#$%^&*)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
