@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Credential Strength Benchmark",
+    "version": "1.0",
+    "description": "Test how strong your password is in real-time.",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Credential Strength Benchmark"
+    },
+    "host_permissions": [],
+    "permissions": []
+}

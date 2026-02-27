@@ -33,6 +33,22 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 400px;
+}
+
+/* Chrome extension popup adjustments */
+@media (max-width: 500px) and (max-height: 600px) {
+    body {
+        min-height: 100%;
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .container {
+        box-shadow: none;
+        border: none;
+        padding: 1rem;
+    }
 }
 
 .container {
@@ -176,4 +192,20 @@ li.valid {
 
 li.valid::before {
     background-color: var(--strength-4);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.breach-alert-active {
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         special: document.getElementById('req-special')
     };
 
+    const breachContainer = document.getElementById('breach-status-container');
+    const breachText = document.getElementById('breach-status-text');
+    let debounceTimer;
+
     const strengthMessages = ['Empty', 'Weak', 'Fair', 'Good', 'Strong'];
     const strengthColors = [
         'var(--strength-0)',
@@ -49,6 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = evaluatePassword(password);
 
         updateUI(result, password.length === 0);
+
+        // Hide breach warning while typing/empty
+        breachContainer.style.display = 'none';
+        breachContainer.classList.remove('breach-alert-active');
+
+        clearTimeout(debounceTimer);
+        if (password.length > 0) {
+            debounceTimer = setTimeout(() => {
+                checkBreaches(password);
+            }, 500); // 500ms debounce
+        }
     });
 
     function evaluatePassword(password) {
@@ -117,6 +132,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 reqElements[req].classList.add('invalid');
                 reqElements[req].classList.remove('valid');
             }
+        }
+    }
+
+    // SHA-1 Hashing Function using Web Crypto API
+    async function sha1(str) {
+        const buffer = new TextEncoder("utf-8").encode(str);
+        const hashBuffer = await crypto.subtle.digest("SHA-1", buffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex.toUpperCase();
+    }
+
+    // Check with HaveIBeenPwned API
+    async function checkBreaches(password) {
+        try {
+            const hash = await sha1(password);
+            const prefix = hash.substring(0, 5);
+            const suffix = hash.substring(5);
+
+            const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
+            if (!response.ok) {
+                console.error("Error fetching breach data");
+                return;
+            }
+
+            const text = await response.text();
+            const lines = text.split('\n');
+            let isPwned = false;
+            let count = 0;
+
+            for (const line of lines) {
+                const parts = line.split(':');
+                if (parts[0].trim() === suffix) {
+                    isPwned = true;
+                    count = parseInt(parts[1].trim(), 10);
+                    break;
+                }
+            }
+
+            if (isPwned) {
+                breachText.textContent = `This password has appeared in data breaches ${count.toLocaleString()} times.`;
+                breachContainer.style.display = 'flex';
+                breachContainer.classList.add('breach-alert-active');
+            } else {
+                breachContainer.style.display = 'none';
+                breachContainer.classList.remove('breach-alert-active');
+            }
+        } catch (error) {
+            console.error("Failed to check breaches:", error);
         }
     }
 });
