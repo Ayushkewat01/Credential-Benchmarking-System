@@ -209,3 +209,64 @@ li.valid::before {
 .breach-alert-active {
     animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+/* Footer Styles */
+.app-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: linear-gradient(to top, rgba(13, 17, 23, 1) 0%, rgba(13, 17, 23, 0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    background-color: rgba(22, 27, 34, 0.6);
+    border: 1px solid rgba(48, 54, 61, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.footer-content:hover {
+    border-color: var(--border-color);
+    background-color: rgba(22, 27, 34, 0.8);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content strong {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.footer-content .divider {
+    color: var(--strength-0);
+    font-size: 0.9rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 1.5rem;
+        text-align: center;
+        border-radius: 12px;
+    }
+    
+    .footer-content .divider {
+        display: none;
+    }
+}

@@ -59,16 +59,36 @@
                 <li id="req-number" class="invalid">Number (0-9)</li>
                 <li id="req-special" class="invalid">Special character (!@#$%^&*)</li>
             </ul>
-            
-            <div id="breach-status-container" style="display: none; margin-top: 1rem; padding: 0.75rem; border-radius: 6px; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; background-color: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.4); color: var(--text-primary);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--strength-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+
+            <div id="breach-status-container"
+                style="display: none; margin-top: 1rem; padding: 0.75rem; border-radius: 6px; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; background-color: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.4); color: var(--text-primary);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="var(--strength-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-alert-triangle">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                    <path d="M12 9v4" />
+                    <path d="M12 17h.01" />
+                </svg>
                 <div style="flex:1;">
                     <span style="font-weight: 600; color: var(--strength-1);">Pwned Password!</span>
-                    <span id="breach-status-text" style="display: block; color: var(--text-secondary); font-size: 0.8rem; margin-top: 2px;">This password has appeared in data breaches.</span>
+                    <span id="breach-status-text"
+                        style="display: block; color: var(--text-secondary); font-size: 0.8rem; margin-top: 2px;">This
+                        password has appeared in data breaches.</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <span class="creators">Created by <strong>Ayush Kewat</strong> & <strong>Gaurav Gurharikar</strong></span>
+            <span class="divider">•</span>
+            <span class="details">Topic No. <strong>T223</strong></span>
+            <span class="divider">•</span>
+            <span class="details">Group No. <strong>A23</strong></span>
+        </div>
+    </footer>
+
     <script src="index.js"></script>
 </body>
 
